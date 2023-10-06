@@ -1,7 +1,7 @@
 # ezmullvad
 Simple bash front-end for Mullvad VPN.
 
-Copy contents to your .bash_aliases file.
+Copy contents of the ```ezmullvad``` file to your ```.bash_aliases``` file.
 
 Use ```mc <Country code>``` to connect or ```mc``` to connect to default location. You can change default location by changing country code in ```mullvad_connect``` function.
 
