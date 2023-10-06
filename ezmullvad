@@ -1,0 +1,52 @@
+# mullvad vpn
+
+mullvad_connect(){
+	country="${1:-ch}"
+	mullvad lockdown-mode set on # Comment out to prevent lockdown-mode from turning on.
+	mullvad relay set location $country
+	mullvad connect
+	sleep 1
+	mullvad status -v
+}
+
+mullvad_disconnect(){
+	mullvad lockdown-mode set off # Comment out to keep lockdown-mode on.
+	mullvad disconnect
+	sleep 1
+	mullvad status
+}
+
+mullvad_status_extra(){
+	mullvad status -v
+	echo ""
+	mullvad lockdown-mode get
+	echo ""
+	mullvad obfuscation get
+	echo ""
+	mullvad lan get
+	echo ""
+	mullvad dns get
+	echo ""
+	mullvad version
+}
+
+mullvad_lan_set(){
+	setting="${1:-0}"
+	if [ $setting = "0" ]
+	then
+		mullvad lan get
+	elif [ $setting = "on" ]
+	then
+		mullvad lan set allow
+		mullvad lan get
+	elif [ $setting = "off" ]
+	then
+		mullvad lan set block
+		mullvad lan get
+	fi
+}
+
+alias "ms"="mullvad_status_extra"
+alias "mc"="mullvad_connect"
+alias "md"="mullvad_disconnect"
+alias "ml"="mullvad_lan_set"
