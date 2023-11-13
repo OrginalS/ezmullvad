@@ -24,4 +24,4 @@ Use ```ml``` to see and ```ml on``` or ```ml off``` to change local network shar
 
 You can comment out ```mullvad lockdown-mode set on``` and ```mullvad lockdown-mode set off``` according to your preference.
 
-You can uncomment ```alias "steam"="mullvad-exclude steam"``` and use ```steam``` to exclude steam traffic from going through a vpn.
+You can uncomment ```"steam"="mullvad-exclude steam & disown"``` and use ```steam``` to exclude steam traffic from going through a vpn.
